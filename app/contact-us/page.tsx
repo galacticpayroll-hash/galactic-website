@@ -102,13 +102,13 @@ export default function Page() {
       });
 
       window.google.maps.event.addListener(infoWindow, "domready", () => {
-        const iwOuter = document.querySelector(".gm-style-iw");
+        const iwOuter = document.querySelector(".gm-style-iw") as HTMLElement | null;
         const iwCloseBtn = document.querySelector(".gm-ui-hover-effect");
         if (iwCloseBtn && iwCloseBtn.parentNode) {
           iwCloseBtn.parentNode.removeChild(iwCloseBtn);
         }
         if (iwOuter && iwOuter.parentElement) {
-          iwOuter.parentElement.style.padding = "0";
+          (iwOuter.parentElement as HTMLElement).style.padding = "0";
           iwOuter.style.maxHeight = "unset";
           iwOuter.style.overflow = "visible";
           iwOuter.style.paddingTop = "0";
