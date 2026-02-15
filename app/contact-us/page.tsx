@@ -6,7 +6,7 @@ import { FormEvent, useEffect, useState } from "react";
 declare global {
   interface Window {
     initMap?: () => void;
-    google?: typeof google;
+    google?: any;
   }
 }
 
