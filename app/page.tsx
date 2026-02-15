@@ -1,65 +1,155 @@
-import Image from "next/image";
+"use client";
+
+const FEATURES = [
+  {
+    title: "Seamless Payroll Solutions",
+    desc:
+      "Run payroll efficiently and accurately for every pay period, with automated tax withholding, filings, and real-time reporting: Giving you more time to lead.",
+    href: "/services?highlight=payroll",
+  },
+  {
+    title: "Workers' Comp That Works For You",
+    desc:
+      "Simplify your cash flow and eliminate large upfront premiums with our popular pay-as-you-go workers’ compensation plan-trusted by businesses of all sizes.",
+    href: "/services?highlight=workers",
+  },
+  {
+    title: "Comprehensive Benefits",
+    desc:
+      "Unlock premium health, dental, vision, and retirement plans at competitive group rates to attract and retain top talent in a demanding market.",
+    href: "/services?highlight=benefits",
+  },
+  {
+    title: "Dedicated HR Expertise",
+    desc:
+      "Get actionable HR advice and solutions, from onboarding to employee relations, delivered by seasoned professionals invested in your success.",
+    href: "/services?highlight=hr",
+  },
+];
+
+const AWARDS = [
+  "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/3882ad08-85cb-4ec6-a721-f426c318de90/hvr+chamber.png?",
+  "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/96d9e7b7-0ab8-4f41-8798-6bc6d75f324e/BBJ+Award.png?",
+  "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/26b5cf78-dfd1-4cb8-ab4e-2f1f0715d1ca/napeo.png?",
+  "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/43ff231c-4eec-41fe-b834-59979d7ac696/hoover+award.png?",
+  "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/2f74fee1-cb19-42d7-8ceb-7d1aca6f6bcb/shelby+county.png?",
+  "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/51bb87a0-b23b-46c3-a3e3-3575e8a9a2d5/BBB.png?",
+];
 
 export default function Home() {
+  const awardItems = [...AWARDS, ...AWARDS, ...AWARDS];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="home-page">
+      <section className="home-hero" aria-label="Galactic nationwide coverage">
+        <div className="home-hero-inner">
+          <div className="home-hero-map">
+            <img
+              src="/GalacticMap.webp"
+              alt="Galactic client coverage map"
+            />
+          </div>
+          <div className="home-hero-copy">
+            <p>
+              From coast to coast, Galactic powers payroll and HR for businesses
+              nationwide - trusted by clients in 44 states and growing.
+            </p>
+            <img
+              src="/Logo Slammed.png"
+              alt="Galactic"
+              className="home-hero-logo"
+            />
+            <span className="home-hero-tagline">
+              HR • Benefits • Payroll • Insurance
+            </span>
+            <img
+              src="/Logo Services [UNCOMMON].png"
+              alt="Galactic services"
+              className="home-hero-services-logo"
+            />
+          </div>
+        </div>
+      </section>
+      <div className="watermark-container" aria-hidden="true">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/495de413-b0e8-4cea-9ba7-def447587636/Watermark.png"
+          alt=""
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </div>
+
+      <section className="why-section" aria-label="Why Go Galactic">
+        <div className="why-inner">
+          <img
+            className="title-img"
+            src="https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/263cc875-de90-499a-93fa-b0e28aa19b41/Why+Go+Galactic.png"
+            alt="Why Go Galactic?"
+          />
+          <p className="lead">
+            As a forward-thinking PEO, we empower your business to thrive with
+            streamlined payroll, advanced benefits, workers' compensation innovation,
+            and proven HR support-all tailored for modern employers and their teams.
+          </p>
+          <div className="feature-grid">
+            {FEATURES.map((feature) => (
+              <a key={feature.title} href={feature.href} className="feature-box">
+                <div className="feature-title">{feature.title}</div>
+                <div className="feature-desc">{feature.desc}</div>
+              </a>
+            ))}
+          </div>
+          <div className="cta-container">
+            <a href="/contact-us" className="cta-button">
+              Connect with Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="peo-section" aria-label="What is a PEO">
+        <div className="peo-inner">
+          <h2>What is a PEO?</h2>
+          <p>
+            A Professional Employer Organization (PEO) partners with businesses to
+            manage HR tasks like payroll, benefits, workers’ compensation, and
+            compliance. This allows companies to focus on core operations with
+            precise, expert support. The partnership ensures efficiency, employee
+            satisfaction, and maintains strict confidentiality and trust.
+          </p>
+          <p className="peo-highlight">
+            Galactic is a modern PEO built for businesses that want to grow without
+            getting buried in HR headaches.
+          </p>
+          <p>
+            We take on the heavy lifting of payroll, benefits, workers' comp,
+            compliance, and HR admin so you can focus on what matters most: your
+            people, your clients, your bottom line.
+          </p>
+          <p>
+            With Galactic, you get the resources of a large employer, plus intuitive
+            HR software that simplifies the day-to-day. It’s cost control, risk
+            reduction, and real support all in one place.
+          </p>
+          <p className="peo-tagline">
+            Your business. Your team. Less hassle. More momentum.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="awards-wrapper" aria-label="Awards">
+        <div className="title-bar">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/c2fba1db-e43f-4a6a-9c8f-7fd285a78343/Awards.png?format=750w"
+            alt="Awards"
+          />
         </div>
-      </main>
+        <div className="carousel-bar">
+          <div className="carousel-track" aria-label="Awards carousel">
+            {awardItems.map((src, index) => (
+              <img src={src} alt={`Award ${index + 1}`} key={`${src}-${index}`} />
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
