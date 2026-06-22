@@ -290,7 +290,7 @@ export default function Page() {
             </div>
             <div className="sidebar-section">
               <div className="contact-blurb">
-                Don't see your question? Check out our contact page to get connected with
+                Don&apos;t see your question? Check out our contact page to get connected with
                 us.
               </div>
               <a

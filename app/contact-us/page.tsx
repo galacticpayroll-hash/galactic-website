@@ -3,10 +3,57 @@
 import Script from "next/script";
 import { FormEvent, useEffect, useState } from "react";
 
+type MapLocation = {
+  lat: number;
+  lng: number;
+};
+
+type GoogleSize = {
+  width: number;
+  height: number;
+};
+
+type GoogleMap = {
+  setCenter: (location: MapLocation) => void;
+  addListener: (eventName: string, handler: () => void) => void;
+};
+
+type GoogleMarker = {
+  addListener: (eventName: string, handler: () => void) => void;
+};
+
+type GoogleInfoWindow = {
+  open: (map: GoogleMap, marker: GoogleMarker) => void;
+  close: () => void;
+  setOptions: (options: { pixelOffset: GoogleSize }) => void;
+};
+
+type GoogleMapsApi = {
+  maps: {
+    Map: new (element: HTMLElement, options: Record<string, unknown>) => GoogleMap;
+    Size: new (width: number, height: number) => GoogleSize;
+    Point: new (x: number, y: number) => unknown;
+    Marker: new (options: Record<string, unknown>) => GoogleMarker;
+    InfoWindow: new (options: Record<string, unknown>) => GoogleInfoWindow;
+    event: {
+      addDomListener: (
+        target: Window,
+        eventName: string,
+        handler: () => void
+      ) => void;
+      addListener: (
+        target: GoogleInfoWindow,
+        eventName: string,
+        handler: () => void
+      ) => void;
+    };
+  };
+};
+
 declare global {
   interface Window {
     initMap?: () => void;
-    google?: any;
+    google?: GoogleMapsApi;
   }
 }
 
@@ -17,12 +64,14 @@ export default function Page() {
     if (typeof window === "undefined") return;
 
     window.initMap = () => {
-      if (!window.google) return;
+      const google = window.google;
+      if (!google) return;
+
       const location = { lat: 33.418716580493566, lng: -86.79797299529069 };
       const gmapsAddressUrl =
         "https://www.google.com/maps?q=400+Vestavia+Parkway+Suite+402+Vestavia,+AL+35216";
 
-      const map = new window.google.maps.Map(
+      const map = new google.maps.Map(
         document.getElementById("gmap") as HTMLElement,
         {
           zoom: 19,
@@ -39,11 +88,11 @@ export default function Page() {
 
       const markerIcon = {
         url: "https://ik.imagekit.io/k5xamaeoin/Untitled.svg?updatedAt=1752676463966",
-        scaledSize: new window.google.maps.Size(192, 192),
-        anchor: new window.google.maps.Point(96, 192),
+        scaledSize: new google.maps.Size(192, 192),
+        anchor: new google.maps.Point(96, 192),
       };
 
-      const marker = new window.google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: location,
         map,
         icon: markerIcon,
@@ -52,10 +101,10 @@ export default function Page() {
 
       const getPixelOffset = () =>
         window.innerWidth <= 600
-          ? new window.google.maps.Size(0, 0)
-          : new window.google.maps.Size(0, 35);
+          ? new google.maps.Size(0, 0)
+          : new google.maps.Size(0, 35);
 
-      const infoWindow = new window.google.maps.InfoWindow({
+      const infoWindow = new google.maps.InfoWindow({
         content: `
           <div style="font-family: Poppins, sans-serif; font-size:14px; max-width:290px; line-height:1.6; word-wrap:break-word; margin: 0;">
             <strong>Galactic</strong><br/>
@@ -97,11 +146,11 @@ export default function Page() {
         window.open(gmapsAddressUrl, "_blank");
       });
 
-      window.google.maps.event.addDomListener(window, "resize", () => {
+      google.maps.event.addDomListener(window, "resize", () => {
         map.setCenter(location);
       });
 
-      window.google.maps.event.addListener(infoWindow, "domready", () => {
+      google.maps.event.addListener(infoWindow, "domready", () => {
         const iwOuter = document.querySelector(".gm-style-iw") as HTMLElement | null;
         const iwCloseBtn = document.querySelector(".gm-ui-hover-effect");
         if (iwCloseBtn && iwCloseBtn.parentNode) {
@@ -164,7 +213,7 @@ export default function Page() {
           </p>
           <div className="info-item">
             <div className="info-icon">
-              <i className="fa-solid fa-location-dot" aria-hidden="true" />
+              <i className="fas fa-map-marker-alt" aria-hidden="true" />
             </div>
             <div className="info-details">
               400 Vestavia Pkwy Suite 402
@@ -174,7 +223,7 @@ export default function Page() {
           </div>
           <div className="phone-row">
             <div className="info-icon">
-              <i className="fa-solid fa-phone" aria-hidden="true" />
+              <i className="fas fa-phone-alt" aria-hidden="true" />
             </div>
             <a href="tel:205.322.2220" className="phone-link">
               205.322.2220
@@ -182,7 +231,7 @@ export default function Page() {
           </div>
           <div className="info-item">
             <div className="info-icon">
-              <i className="fa-solid fa-envelope" aria-hidden="true" />
+              <i className="fas fa-envelope" aria-hidden="true" />
             </div>
             <div className="info-details">
               <a href="mailto:payroll@galactic-inc.com">
@@ -220,7 +269,7 @@ export default function Page() {
             <button type="submit">SEND MESSAGE</button>
             {submitted && (
               <div className="thank-you">
-                Thank you for your message! We'll be in touch soon.
+                Thank you for your message! We&apos;ll be in touch soon.
               </div>
             )}
           </form>

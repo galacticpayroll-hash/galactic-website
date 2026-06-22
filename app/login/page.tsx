@@ -23,7 +23,7 @@ export default function Page() {
       <main className="login-cards">
         <article className="portal-card">
           <div className="portal-icon">
-            <i className="fa-solid fa-building-user" aria-hidden="true" />
+            <i className="fas fa-building" aria-hidden="true" />
           </div>
           <div className="portal-content">
             <h2>PrismHR Client Portal</h2>
@@ -44,7 +44,7 @@ export default function Page() {
 
         <article className="portal-card">
           <div className="portal-icon">
-            <i className="fa-solid fa-user" aria-hidden="true" />
+            <i className="fas fa-user" aria-hidden="true" />
           </div>
           <div className="portal-content">
             <h2>PrismHR Employee Portal</h2>
@@ -62,7 +62,7 @@ export default function Page() {
 
         <article className="portal-card hide-maid2pay" aria-hidden="true">
           <div className="portal-icon">
-            <i className="fa-solid fa-file-invoice" aria-hidden="true" />
+            <i className="fas fa-file-invoice" aria-hidden="true" />
           </div>
           <div className="portal-content">
             <h2>maid2pay</h2>
