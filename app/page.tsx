@@ -10,7 +10,7 @@ const FEATURES = [
   {
     title: "Workers' Comp That Works For You",
     desc:
-      "Simplify your cash flow and eliminate large upfront premiums with our popular pay-as-you-go workers’ compensation plan-trusted by businesses of all sizes.",
+      "Simplify your cash flow and eliminate large upfront premiums with our popular pay-as-you-go workers’ compensation plan, trusted by businesses of all sizes.",
     href: "/services?highlight=workers",
   },
   {
@@ -86,8 +86,8 @@ export default function Home() {
           />
           <p className="lead">
             As a forward-thinking PEO, we empower your business to thrive with
-            streamlined payroll, advanced benefits, workers' compensation innovation,
-            and proven HR support-all tailored for modern employers and their teams.
+            streamlined payroll, advanced benefits, workers&apos; compensation innovation,
+            and proven HR support, all tailored for modern employers and their teams.
           </p>
           <div className="feature-grid">
             {FEATURES.map((feature) => (
@@ -120,7 +120,7 @@ export default function Home() {
             getting buried in HR headaches.
           </p>
           <p>
-            We take on the heavy lifting of payroll, benefits, workers' comp,
+            We take on the heavy lifting of payroll, benefits, workers&apos; comp,
             compliance, and HR admin so you can focus on what matters most: your
             people, your clients, your bottom line.
           </p>

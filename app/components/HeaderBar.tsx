@@ -34,7 +34,7 @@ export default function HeaderBar() {
         }
       } catch {}
     }
-    setTimezone(abbr);
+    window.requestAnimationFrame(() => setTimezone(abbr));
   }, []);
 
   return (

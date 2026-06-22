@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Script from "next/script";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import HeaderBar from "./components/HeaderBar";
@@ -24,8 +23,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Galactic",
-  description: "Galactic website",
+  title: "Galactic | HR, Benefits, Payroll & Insurance",
+  description:
+    "Galactic helps businesses simplify payroll, HR, benefits, workers' compensation, and insurance with responsive PEO support.",
 };
 
 export default function RootLayout({

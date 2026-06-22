@@ -28,7 +28,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Jenny Dunaway",
-    title: "Senior Payroll account manager",
+    title: "Senior Payroll Account Manager",
     phone: "(205) 941-7086",
     image:
       "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/5becbde7-5e58-4870-afa8-fdc95fead337/Headshot-Jenny-min.png?format=750w",
@@ -52,7 +52,7 @@ const TEAM: TeamMember[] = [
   },
   {
     name: "Matthew Hopkins",
-    title: "operations Manager",
+    title: "Operations Manager",
     phone: "(205) 941-7088",
     image:
       "https://images.squarespace-cdn.com/content/v1/5cd9752df8135a1b11827874/1fb3570a-a92e-42c9-afce-2cf02016b5a4/Headshot-Matt.png?format=750w",
@@ -173,7 +173,7 @@ export default function Page() {
 
           <div className="about-feature">
             <h4>
-              <i className="fa-solid fa-briefcase" aria-hidden="true" /> Comprehensive
+              <i className="fas fa-briefcase" aria-hidden="true" /> Comprehensive
               HR Admin
             </h4>
             <p>Payroll, compliance, benefits and more handled efficiently.</p>
@@ -181,7 +181,7 @@ export default function Page() {
 
           <div className="about-feature">
             <h4>
-              <i className="fa-solid fa-cloud" aria-hidden="true" /> Intuitive Web
+              <i className="fas fa-cloud" aria-hidden="true" /> Intuitive Web
               Platform
             </h4>
             <p>A user-friendly interface that streamlines HR tasks seamlessly.</p>
@@ -216,11 +216,11 @@ export default function Page() {
       <section className="holiday-closures-section">
         <div className="holiday-closures-inner">
           <h2>Holiday Closures 2025</h2>
-          <p>Here's when our office will be closed so you can plan accordingly.</p>
+          <p>Here&apos;s when our office will be closed so you can plan accordingly.</p>
           <ul className="holiday-closures-list">
             <li>
               <i className="fas fa-calendar-alt" aria-hidden="true" />
-              New Year's Day - January 1
+              New Year&apos;s Day - January 1
             </li>
             <li>
               <i className="fas fa-flag-usa" aria-hidden="true" />
@@ -252,4 +252,3 @@ export default function Page() {
     </div>
   );
 }
-

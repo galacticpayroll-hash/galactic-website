@@ -24,7 +24,7 @@ export default function Page() {
     if (highlightTab && !userHasClicked) {
       const exists = TABS.some((t) => t.id === highlightTab);
       if (exists) {
-        setActiveTab(highlightTab);
+        window.requestAnimationFrame(() => setActiveTab(highlightTab));
       }
     }
   }, [highlightTab, userHasClicked]);
